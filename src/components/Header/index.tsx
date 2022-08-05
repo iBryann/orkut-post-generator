@@ -17,9 +17,9 @@ const Header = () => {
                     <span>Criado por Bryann Henrique</span>
 
                     <ul>
-                        <li><a href='https://www.linkedin.com/in/ibryann'><LinkedIn /></a></li>
-                        <li><a href='https://github.com/iBryann/orkut-post-generator'><GitHub /></a></li>
-                        <li><a href='https://www.figma.com/file/MUeVt7QTV6AaQMmEif5y8f/Projetos-Mentoria?node-id=14%3A18'><Figma /></a></li>
+                        <li><a target='_blank' href='https://www.linkedin.com/in/ibryann'><LinkedIn /></a></li>
+                        <li><a target='_blank' href='https://github.com/iBryann/orkut-post-generator'><GitHub /></a></li>
+                        <li><a target='_blank' href='https://www.figma.com/file/MUeVt7QTV6AaQMmEif5y8f/Projetos-Mentoria?node-id=14%3A18'><Figma /></a></li>
                     </ul>
                 </div>
             </div>
