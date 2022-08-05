@@ -16,7 +16,7 @@ const Home = () => {
                             <h2>Criar comunidade</h2>
 
                             <div className='breadcrumb'>
-                                Início <span>&gt;</span> Início <span>&gt; Criar comunidade</span>
+                                Início <span>&gt;</span> Comunidades <span>&gt; Criar comunidade</span>
                             </div>
                         </header>
 
