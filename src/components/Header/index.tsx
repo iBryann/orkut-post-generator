@@ -1,24 +1,31 @@
-import Logo from '../../assets/imgs/logo.png';
+import LogoImg from '../../assets/imgs/logo.png';
+import { Figma, GitHub, LinkedIn } from '../../assets/icons';
 
 import './styles.scss';
 
 
-export const Header = () => {
+const Header = () => {
 
     return (
-        <header className="header">
-            <div className="header__logo">
-                <img src={Logo} alt="Orkut post generator" />
-            </div>
+        <header className='header'>
+            <div className='header--container'>
+                <div className='header--brand'>
+                    <img src={LogoImg} alt='Orkut logomarca' />
+                </div>
 
-            <nav className="header__nav">
-                <ul>
-                    <li>Criado por Bryann Henrique</li>
-                    <li>
-                        <a href="#"></a>
-                    </li>
-                </ul>
-            </nav>
+                <div className='header--social'>
+                    <span>Criado por Bryann Henrique</span>
+
+                    <ul>
+                        <li><a href='https://www.linkedin.com/in/ibryann'><LinkedIn /></a></li>
+                        <li><a href='https://github.com/iBryann/orkut-post-generator'><GitHub /></a></li>
+                        <li><a href='https://www.figma.com/file/MUeVt7QTV6AaQMmEif5y8f/Projetos-Mentoria?node-id=14%3A18'><Figma /></a></li>
+                    </ul>
+                </div>
+            </div>
         </header>
     );
 }
+
+
+export default Header;

@@ -1,20 +1,62 @@
 .header {
-    border: 1px solid red;
-    display: flex;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25), inset 0px 1px 2px rgba(0, 0, 0, 0.25);
+    background-color: #649DD5;
 
-    &__logo {
+    .header--container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 0 15px;
 
-        img {
-
+        .header--brand {
+            position: relative;
+            bottom: -3px;
         }
-    }
 
-    &__nav {
+        .header--social {
+            display: flex;
+            align-items: center;
 
-        ul {
-            li {
-                a {
+            span {
+                font-family: 'Inter', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 15px;
+                color: #FFFFFF;
+                margin-right: 20px;
+            }
 
+            ul {
+                display: flex;
+                list-style: none;
+
+                li {
+                    margin-right: 20px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    a {
+
+                        path,
+                        circle {
+                            transition: .2s;
+                        }
+
+                        &:hover {
+                            path {
+                                stroke: #ED2590;
+                            }
+
+                            circle {
+                                fill: white;
+                            }
+                        }
+                    }
                 }
             }
         }
