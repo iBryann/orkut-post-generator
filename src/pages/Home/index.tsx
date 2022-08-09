@@ -1,11 +1,10 @@
 import './styles.scss';
+import Form from '../../components/Form';
 import Header from '../../components/Header';
-import InputFile from '../../components/InputFile';
-import { useAppContext } from '../../hooks/AppContext';
+import Preview from '../../components/Preview';
 
 
 const Home = () => {
-    const { context } = useAppContext();
 
     return (
         <div>
@@ -13,40 +12,11 @@ const Home = () => {
 
             <div className='main'>
                 <div className='left'>
-                    <form>
-                        <header>
-                            <h1>{context.name}</h1>
-                            
-                            <h2>Criar comunidade</h2>
-
-                            <div className='breadcrumb'>
-                                Início <span>&gt;</span> Comunidades <span>&gt; Criar comunidade</span>
-                            </div>
-                        </header>
-
-                        <InputFile />
-
-                        <div className='input--wrapper'>
-                            <label htmlFor=''>Autor</label>
-                            <input type='text' placeholder='Qual o @ do autor?' />
-                        </div>
-
-                        <div className='input--wrapper'>
-                            <label htmlFor=''>Título da comunidade</label>
-                            <input type='text' placeholder='Como vamos chamar sua comunidade?' />
-                        </div>
-
-                        <div className='input--wrapper'>
-                            <label htmlFor=''>Descrição</label>
-                            <textarea placeholder='Digite uma descrição' />
-                        </div>
-
-                        <button type='submit'>Baixar</button>
-                    </form>
+                    <Form />
                 </div>
 
                 <div className='right'>
-                    <canvas id='preview' width={476} height={476}></canvas>
+                    <Preview />
                 </div>
             </div>
         </div>

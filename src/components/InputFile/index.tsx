@@ -1,21 +1,25 @@
-import { useState } from 'react';
-import { useAppContext } from '../../hooks/AppContext';
 import './styles.scss';
+import { useAppContext } from '../../hooks/AppContext';
 
 
 const InputFile = () => {
-    const { context, setContext } = useAppContext();
+    const { context: { form: { image } }, setContext } = useAppContext();
     
     function handleOpenDialog() {
         const dialog = document.createElement('input');
         dialog.type = 'file';
+        dialog.multiple = false;
+        dialog.accept = 'image/*';
         dialog.click();
 
-        dialog.addEventListener('change', () => {
-            if (dialog.files) {
-                setContext(dialog.files[0]);
-            }
-        });
+        dialog.onchange = () => {
+            const image = dialog.files && dialog.files[0];
+
+            setContext(s => ({
+                ...s,
+                form: ({ ...s.form, image })
+            }));
+        }
     }
 
     return (
@@ -23,10 +27,10 @@ const InputFile = () => {
             <div className='input-file--label'>Foto da comunidade</div>
 
             <div className='button-wrapper' onClick={handleOpenDialog}>
-                <input type='hidden' name='file' />
-                <div className={`button-wrapper--filename ${ context.name && 'filled'}`}>
-                    { context.name ? context.name : 'Selecione uma imagem'}
+                <div className={`button-wrapper--filename ${ image?.name && 'filled'}`}>
+                    { image?.name ? image.name : 'Selecione uma imagem'}
                 </div>
+                
                 <button type='button' className='button-wrapper--button'>selecionar...</button>
             </div>
         </div>

@@ -4,8 +4,10 @@ import {
     ReactNode,
     SetStateAction,
     useContext,
+    useRef,
     useState
 } from 'react';
+import { IContextData } from '../typings/interfaces';
 
 
 interface Props {
@@ -13,14 +15,23 @@ interface Props {
 }
 
 interface IContext {
-    context: File;
-    setContext: Dispatch<SetStateAction<File>>;
+    context: IContextData;
+    setContext: Dispatch<SetStateAction<IContextData>>;
 }
 
 const AppContext = createContext({} as IContext);
 
 const AppProvider = ({ children }: Props) => {
-    const [context, setContext] = useState({} as File);
+    const canvasRef = useRef({} as HTMLCanvasElement);
+    const [context, setContext] = useState<IContextData>({
+        canvasRef,
+        form: {
+            author: '',
+            description: '',
+            title: '',
+            image: null
+        }
+    });
     
     return (
         <AppContext.Provider value={{ context, setContext }}>
