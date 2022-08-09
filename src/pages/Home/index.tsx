@@ -1,9 +1,11 @@
 import './styles.scss';
 import Header from '../../components/Header';
 import InputFile from '../../components/InputFile';
+import { useAppContext } from '../../hooks/AppContext';
 
 
 const Home = () => {
+    const { context } = useAppContext();
 
     return (
         <div>
@@ -13,6 +15,8 @@ const Home = () => {
                 <div className='left'>
                     <form>
                         <header>
+                            <h1>{context.name}</h1>
+                            
                             <h2>Criar comunidade</h2>
 
                             <div className='breadcrumb'>

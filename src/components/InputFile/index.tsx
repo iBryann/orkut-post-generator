@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { useAppContext } from '../../hooks/AppContext';
 import './styles.scss';
 
 
 const InputFile = () => {
-    const [file, setFile] = useState<File>({} as File);
+    const { context, setContext } = useAppContext();
     
     function handleOpenDialog() {
         const dialog = document.createElement('input');
@@ -12,7 +13,7 @@ const InputFile = () => {
 
         dialog.addEventListener('change', () => {
             if (dialog.files) {
-                setFile(dialog.files[0]);
+                setContext(dialog.files[0]);
             }
         });
     }
@@ -23,8 +24,8 @@ const InputFile = () => {
 
             <div className='button-wrapper' onClick={handleOpenDialog}>
                 <input type='hidden' name='file' />
-                <div className={`button-wrapper--filename ${ file.name && 'filled'}`}>
-                    { file.name ? file.name : 'Selecione uma imagem'}
+                <div className={`button-wrapper--filename ${ context.name && 'filled'}`}>
+                    { context.name ? context.name : 'Selecione uma imagem'}
                 </div>
                 <button type='button' className='button-wrapper--button'>selecionar...</button>
             </div>

@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './pages/Home';
 
 import './styles/global.scss';
+import Home from './pages/Home';
+import { AppProvider } from './hooks/AppContext';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <Home />
+        <AppProvider>
+            <Home />
+        </AppProvider>
     </React.StrictMode>
 );
