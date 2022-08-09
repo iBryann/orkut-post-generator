@@ -57,6 +57,7 @@ const Preview = () => {
         const url = URL.createObjectURL(svg);
         
         img.src = url;
+        img.crossOrigin = 'anonymous';
         img.onload = function () {
             ctx.drawImage(img, x, y);
             URL.revokeObjectURL(url);
