@@ -62,6 +62,12 @@ form {
                 color: #CCC;
             }
         }
+
+        textarea {
+            padding: 10px 10px;
+            min-height: 100px;
+            line-height: 20px;
+        }
     }
 
     button[type="submit"] {
