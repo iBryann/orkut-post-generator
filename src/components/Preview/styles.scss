@@ -1,5 +1,68 @@
-canvas {
-    height: 480px;
-    aspect-ratio: auto;
+.preview {
+    position: relative;
     background-color: #dbe6f4;
+    
+    .bg {
+        position: relative;
+        height: 534px;
+        aspect-ratio: auto;
+    }
+    
+    :is(.picture, .title, .title-secondary, .text, .author) {
+        position: absolute;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+    .picture {
+        top: 44px;
+        left: 5px;
+        width: 114px;
+        height: 114px;
+        background-color: white;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .title {
+        top: 48px;
+        left: 144px;
+        max-width: 440px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 18px;
+        color: #272727;
+    }
+    .title-secondary {
+        top: 162px;
+        left: 5px;
+        max-width: 114px;
+        max-height: 36px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 19px;
+        color: #4E999C;
+        word-break: break-all;
+    }
+    .text {
+        top: 101px;
+        left: 270px;
+        max-width: 325px;
+        height: 280px;
+
+        p {
+            margin-bottom: 8px;
+            font-size: 12px;
+            line-height: 14px;
+            color: #081623;
+            word-break: break-all;
+        }
+    }
+    .author {
+        top: 438px;
+        left: 284px;
+        max-width: 325px;
+        font-size: 12px;
+        line-height: 14px;
+        color: #000000;
+    }
 }

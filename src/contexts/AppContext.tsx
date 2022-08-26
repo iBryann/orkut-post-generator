@@ -22,14 +22,14 @@ interface IContext {
 const AppContext = createContext({} as IContext);
 
 const AppProvider = ({ children }: Props) => {
-    const canvasRef = useRef({} as HTMLCanvasElement);
+    const previewRef = useRef({} as HTMLDivElement);
     const [context, setContext] = useState<IContextData>({
-        canvasRef,
+        previewRef,
         form: {
             author: '',
             description: '',
             title: '',
-            image: null
+            image: {} as File
         }
     });
     

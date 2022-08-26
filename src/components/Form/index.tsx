@@ -2,11 +2,12 @@ import { ChangeEvent, FormEvent } from 'react';
 
 import './styles.scss';
 import InputFile from '../InputFile';
-import { useAppContext } from '../../hooks/AppContext';
+import { useAppContext } from '../../contexts/AppContext';
+import html2canvas from 'html2canvas';
 
 
 const Form = () => {
-    const { context: { canvasRef, form: { author, description, title } }, setContext } = useAppContext();
+    const { context: { previewRef, form: { author, description, title } }, setContext } = useAppContext();
 
     function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const { name, value } = e.currentTarget;
@@ -18,12 +19,16 @@ const Form = () => {
     }
 
     function download() {
-        const dataImg = canvasRef.current.toDataURL(`image/png`); // png (padrão) / jpeg / webp (Chrome)
-        const downloadLink = document.createElement('a');
-
-        downloadLink.setAttribute('download', `${author}`);
-        downloadLink.setAttribute('href', dataImg);
-        downloadLink.click();
+        html2canvas(previewRef.current)
+        .then(function(canvas) {
+            const dataImg = canvas.toDataURL(`image/png`); // png (padrão) / jpeg / webp (Chrome)
+            const downloadLink = document.createElement('a');
+    
+            downloadLink.setAttribute('download', `${title.replaceAll(' ', '-')}`);
+            downloadLink.setAttribute('href', dataImg);
+            downloadLink.click();
+        })
+        .catch(console.error);
     }
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -52,6 +57,7 @@ const Form = () => {
                     onChange={handleChange}
                     type='text'
                     placeholder='Qual o @ do autor?'
+                    maxLength={30}
                 />
             </div>
 
@@ -63,6 +69,7 @@ const Form = () => {
                     onChange={handleChange}
                     type='text'
                     placeholder='Como vamos chamar sua comunidade?'
+                    maxLength={30}
                 />
             </div>
 
@@ -73,6 +80,7 @@ const Form = () => {
                     value={description}
                     onChange={handleChange}
                     placeholder='Digite uma descrição'
+                    maxLength={900}
                 />
             </div>
 

@@ -1,5 +1,5 @@
 import './styles.scss';
-import { useAppContext } from '../../hooks/AppContext';
+import { useAppContext } from '../../contexts/AppContext';
 
 
 const InputFile = () => {
@@ -13,11 +13,15 @@ const InputFile = () => {
         dialog.click();
 
         dialog.onchange = () => {
-            const image = dialog.files && dialog.files[0];
-
+            const file = dialog.files && dialog.files[0];
+            const image = file as File;
+            
             setContext(s => ({
                 ...s,
-                form: ({ ...s.form, image })
+                form: ({
+                    ...s.form,
+                    image
+                })
             }));
         }
     }

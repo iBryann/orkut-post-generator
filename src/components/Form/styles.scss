@@ -5,6 +5,10 @@ form {
     border-radius: 7px;
     background-color: #FFFFFF;
 
+    @media (max-width: 767px) {
+        width: 100%;
+    }
+
     header {
         h2 {
             margin-bottom: 6px;

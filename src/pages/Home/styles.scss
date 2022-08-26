@@ -3,12 +3,35 @@
     align-items: center;
     justify-content: center;
     height: calc(100vh - 50px);
-    
+
     .right {
         padding: 15px;
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
         margin-left: 60px;
         border-radius: 7px;
         background-color: #FFFFFF;
+    }
+
+    @media (max-width: 767px) {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        margin: 40px 0;
+        padding: 0 15px;
+
+        :is(.left, .right) {
+            width: 100%;
+        }
+
+        .right {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 0;
+            overflow: hidden;
+
+            .preview {
+                zoom: 50%;
+            }
+        }
     }
 }

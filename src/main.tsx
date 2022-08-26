@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import './styles/global.scss';
 import Home from './pages/Home';
-import { AppProvider } from './hooks/AppContext';
+import { AppProvider } from './contexts/AppContext';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
