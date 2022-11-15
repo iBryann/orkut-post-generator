@@ -1,29 +1,31 @@
+import html2canvas from 'html2canvas';
 import { ChangeEvent, FormEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './styles.scss';
 import InputFile from '../InputFile';
-import { useAppContext } from '../../contexts/AppContext';
-import html2canvas from 'html2canvas';
+import { StoreType } from '../../store';
+import { changeForm, FieldsType } from '../../store/reducers/formSlice';
 
 
 const Form = () => {
-    const { context: { previewRef, form: { author, description, title } }, setContext } = useAppContext();
+    const { author, description, title } = useSelector((state: StoreType) => state.form);
+    const dispatch = useDispatch();
 
     function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        const { name, value } = e.currentTarget;
+        const { name: n, value: v } = e.currentTarget;
+        const name = n as FieldsType;
+        const value = v as any;
 
-        setContext(s => ({
-            ...s,
-            form: ({ ...s.form, [name]: value })
-        }));
+        dispatch(changeForm({ name, value }));
     }
 
     function download() {
-        html2canvas(previewRef.current)
+        html2canvas(document.querySelector<HTMLDivElement>('.preview')!)
         .then(function(canvas) {
             const dataImg = canvas.toDataURL(`image/png`); // png (padrão) / jpeg / webp (Chrome)
             const downloadLink = document.createElement('a');
-    
+
             downloadLink.setAttribute('download', `${title.replaceAll(' ', '-')}`);
             downloadLink.setAttribute('href', dataImg);
             downloadLink.click();
@@ -33,7 +35,7 @@ const Form = () => {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        
+
         download();
     }
 

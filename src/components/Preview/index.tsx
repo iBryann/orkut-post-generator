@@ -1,28 +1,28 @@
-import { memo, useEffect, useMemo, useRef } from 'react';
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 import './styles.scss';
 import BackgroundImg from '../../assets/imgs/background.png';
-import { useAppContext } from '../../contexts/AppContext';
+import { StoreType } from '../../store';
 
 
 const Preview = () => {
-    const { context: { form, previewRef } } = useAppContext();
-    const { author, description, image, title } = form;
-
+    const { author, description, image, title } = useSelector((state: StoreType) => state.form);
     const imgURL = useMemo(() => (
-        image.name 
+        image.name
             ? URL.createObjectURL(image)
             : ''
     ), [image]);
 
     return (
-        <div className='preview' ref={previewRef}>
+        <div className='preview'>
             <img className='bg' src={BackgroundImg} alt="Background image" />
 
             <div
                 className="picture"
                 style={{ backgroundImage: `url(${imgURL})` }}
             ></div>
+
             <h2 className="title">{title}</h2>
 
             <h3 className="title-secondary">{title}</h3>
