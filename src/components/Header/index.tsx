@@ -14,7 +14,7 @@ const Header = () => {
                 </div>
 
                 <div className='header--social'>
-                    <span>Criado por Bryann Henrique 123</span>
+                    <span>Criado por Bryann Henrique</span>
 
                     <ul>
                         <li><a target='_blank' href='https://www.linkedin.com/in/ibryann'><LinkedIn /></a></li>
